@@ -1,0 +1,15 @@
+import React from "react"
+import { type {{pascalCase name}}Props, type {{pascalCase name}}ViewProps } from './{{name}}.props';
+import {{pascalCase name}}View from './{{name}}.view';
+
+const {{pascalCase name}} = (props: {{pascalCase name}}Props): React.JSX.Element => {
+
+  // You can use this to generate props for the view
+  const generateProps: {{pascalCase name}}ViewProps = {};
+
+  return (
+    <{{pascalCase name}}View {...generateProps} />
+  )
+}
+
+export default {{pascalCase name}};
