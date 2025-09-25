@@ -1,0 +1,14 @@
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { {{pascalCase name}} } from '.';
+
+// 👇 This default export determines where your story goes in the story list
+const meta = {
+  component: {{pascalCase name}},
+} satisfies Meta<typeof {{pascalCase name}}>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};
