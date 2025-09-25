@@ -1,11 +1,11 @@
 ﻿'use client';
 
 import React, { useContext } from 'react';
-import { Handle, Position, type NodeProps } from '@xyflow/react';
+import { Handle, Position, type NodeProps, type NodeTypes } from '@xyflow/react';
 
 import { ROLE_BADGE } from '../constants';
 import { ThemeContext } from '../theme';
-import type { NodeData } from '../types';
+import type { FlowEdge, FlowNode } from '../types';
 import { useMakeIsValid } from '../hooks/useMakeIsValid';
 import { Badge } from './Badge';
 
@@ -25,7 +25,7 @@ const highlightedShell = (t: React.ContextType<typeof ThemeContext>) => ({
   boxShadow: '0 12px 32px rgba(99, 102, 241, 0.22)',
 });
 
-function StartNode({ id, data, selected }: NodeProps<NodeData>) {
+function StartNode({ id, data, selected }: NodeProps<FlowNode>) {
   const t = useContext(ThemeContext);
   const isValid = useMakeIsValid();
 
@@ -44,7 +44,7 @@ function StartNode({ id, data, selected }: NodeProps<NodeData>) {
   );
 }
 
-function MiddleNode({ id, data, selected }: NodeProps<NodeData>) {
+function MiddleNode({ id, data, selected }: NodeProps<FlowNode>) {
   const t = useContext(ThemeContext);
   const isValid = useMakeIsValid();
 
@@ -77,7 +77,7 @@ function MiddleNode({ id, data, selected }: NodeProps<NodeData>) {
   );
 }
 
-function EndNode({ data, selected }: NodeProps<NodeData>) {
+function EndNode({ data, selected }: NodeProps<FlowNode>) {
   const t = useContext(ThemeContext);
   const isValid = useMakeIsValid();
 
@@ -91,8 +91,9 @@ function EndNode({ data, selected }: NodeProps<NodeData>) {
   );
 }
 
-export const nodeTypes = {
+// export const nodeTypes: NodeTypes<FlowNode, FlowEdge> = { // todo:
+export const nodeTypes: any = {
   start: StartNode,
   agent: MiddleNode,
   end: EndNode,
-} as const;
+};
